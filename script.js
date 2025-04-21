@@ -62,7 +62,7 @@ whatsappBtn.addEventListener('click', () => {
     `%0A%0ATotal: $${total}` +
     `%0A📅 Entrega: ${dateValue} a las ${timeValue}`;
 
-  const phone = "5491112345678"; // Cambiar por tu número real
+  const phone = "543496516330"; // Cambiar por tu número real
   const link = `https://wa.me/${phone}?text=Hola! Quiero hacer este pedido:%0A${message}`;
 
   window.open(link, '_blank');

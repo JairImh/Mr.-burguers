@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🍔 Mr. Burguers</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Rubik+Glitch&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>🍔 Mr. Burguers</h1>
+    <p>Hamburguesas con estilo y sabor</p>
+  </header>
+
+  <main>
+    <section class="menu">
+      <div class="burger-card" data-name="Clásica" data-price="1500">
+        <img src="https://i.imgur.com/IYbNfTg.png" alt="Clásica">
+        <h2>Clásica</h2>
+        <p>Carne, lechuga, tomate y cheddar</p>
+        <button>🍔 Agregar</button>
+      </div>
+      <div class="burger-card" data-name="Doble Bacon" data-price="2200">
+        <img src="https://i.imgur.com/jSyCgOg.png" alt="Doble Bacon">
+        <h2>Doble Bacon</h2>
+        <p>Doble carne, cheddar, bacon, salsa especial</p>
+        <button>🥓 Agregar</button>
+      </div>
+      <div class="burger-card" data-name="Veggie" data-price="1800">
+        <img src="https://i.imgur.com/QyYjZBq.png" alt="Veggie">
+        <h2>Veggie</h2>
+        <p>Lentejas, palta, cebolla caramelizada</p>
+        <button>🥬 Agregar</button>
+      </div>
+    </section>
+
+    <aside class="cart">
+      <label for="delivery-date">📅 Día de entrega:</label>
+      <input type="date" id="delivery-date" required>
+
+      <label for="delivery-time">⏰ Hora de entrega:</label>
+      <input type="time" id="delivery-time" required>
+
+      <h2>🛒 Tu pedido</h2>
+      <ul id="cart-list"></ul>
+      <p class="total">Total: $<span id="total">0</span></p>
+      <button id="whatsapp-btn">📲 Pedir por WhatsApp</button>
+
+    </aside>
+  </main>
+
+  <footer>
+    <p>🔥 Mr. Burguers © 2025 - Design for Jair Imhoff - @jairimhoff  🔥</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,67 +1,62 @@
 /* FUENTE GENERAL */
 body {
-    font-family: 'Fredoka', sans-serif;
-    background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* HEADER */
-  header {
-    background: #ff005c;
-    text-align: center;
-    padding: 40px 20px;
-    color: white;
-    text-shadow: 2px 2px #000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  }
-  
-  header h1 {
-    font-family: 'Rubik Glitch', cursive;
-    font-size: 3.2em;
-    margin: 0;
-  }
-  
-  header p {
-    margin: 10px 0 0;
-    font-size: 1.2em;
-  }
-  
-  /* CONTENIDO PRINCIPAL */
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 30px;
-    gap: 30px;
-    justify-content: center;
-  }
-  
-  .menu {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    flex: 2;
-    justify-content: center;
-  }
-  
-  .burger-card {
-    background: #1f1f2e;
-    padding: 20px;
-    border-radius: 16px;
-    width: 260px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px #ff005c90;
-    border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
+  font-family: 'Fredoka', sans-serif;
+  background-color: #f9f5ee;
+  color: #4e342e;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #e6dbc8;
+  text-align: center;
+  padding: 40px 20px;
+  color: #4e342e;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 3.2em;
+  margin: 0;
+  color: #4e342e;
+}
+
+header p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #6d4c41;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 30px;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  flex: 2;
+  justify-content: center;
+}
+
+.burger-card {
+  background-color: #f3e9dc;
+  padding: 20px;
+  border-radius: 16px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c8b6a6;
+  color: #4e342e;
+}
+
   .burger-card:hover {
     transform: scale(1.05);
-    border-color: #ff005c;
+    border-color: #4e342e;
   }
   
   .burger-card img {
@@ -72,24 +67,23 @@ body {
     margin-bottom: 10px;
   }
   
+  
   .burger-card h2 {
     margin: 0;
     font-size: 1.4em;
-    color: #ffce00;
+    color: #6d4c41;
   }
   
   .burger-card p {
     font-size: 0.95em;
-    color: #ccc;
-    margin-bottom: 10px;
+    color: #5d4037;
   }
   
   .burger-card button {
-    align-self: center;
     margin-top: 12px;
     padding: 10px 16px;
-    background: #ffce00;
-    color: #000;
+    background: #d2a679;
+    color: white;
     border: none;
     border-radius: 10px;
     font-weight: bold;
@@ -98,25 +92,23 @@ body {
   }
   
   .burger-card button:hover {
-    background: #ff9900;
+    background: #a97458;
     transform: scale(1.05);
   }
   
   /* CARRITO */
   .cart {
-    background: #1c1c28;
+    background-color: #f3e9dc;
     padding: 20px;
     border-radius: 16px;
     width: 300px;
-    box-shadow: 0 0 15px #25d366aa;
-    border: 2px solid #25d36633;
-    height: fit-content;
+    border: 1px solid #c8b6a6;
   }
   
   .cart h2 {
-    margin-top: 0;
-    color: #25d366;
+    color: #4e342e;
   }
+  
   
   #cart-list {
     list-style: none;
@@ -125,46 +117,42 @@ body {
   }
   
   #cart-list li {
-    margin-bottom: 6px;
-    font-size: 0.95em;
-    color: #eee;
+    color: #5d4037;
   }
   
   .total {
     font-weight: bold;
     font-size: 1.1em;
-    color: #fff;
+    color: #4e342e;
   }
   
   #whatsapp-btn {
     display: block;
     width: 100%;
-    background: #25D366;
-    color: #000;
+    background: #d2a679;
+    color: white;
     text-decoration: none;
     padding: 12px;
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
-    transition: background 0.3s;
     margin-top: 10px;
+    transition: background 0.3s;
   }
   
   #whatsapp-btn:hover {
-    background: #1ebe5d;
+    background: #a97458;
   }
   
   /* FOOTER */
   footer {
-    background: #111;
+    background: #e6dbc8;
     text-align: center;
     padding: 20px;
     font-size: 0.9em;
-    color: #ffce00;
-    border-top: 2px solid #ff005c88;
-    margin-top: 40px;
+    color: #4e342e;
+    border-top: 1px solid #c8b6a6;
   }
-  
   /* 📱 RESPONSIVE */
   @media screen and (max-width: 768px) {
     main {
@@ -217,19 +205,16 @@ body {
     }
   }
   .cart label {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 4px;
     font-weight: bold;
-    color: #ddd;
+    color: #5d4037;
   }
   
   .cart input {
-    width: 96%;
+    width: 95%;
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid #c8b6a6;
     border-radius: 10px;
-    font-size: 1em;
+    background-color: #fff9f2;
+    color: #4e342e;
   }
-    

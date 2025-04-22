@@ -60,7 +60,7 @@ main {
   }
   
   .burger-card img {
-    width: auto;
+    width: max-content;
     height: 160px;
     object-fit:;
     border-radius: 10px;

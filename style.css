@@ -60,9 +60,9 @@ main {
   }
   
   .burger-card img {
-    width: 100%;
+    width: auto;
     height: 160px;
-    object-fit:contain;
+    object-fit:;
     border-radius: 10px;
     margin-bottom: 10px;
     

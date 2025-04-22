@@ -41,7 +41,7 @@ main {
   flex-wrap: wrap;
   flex: 2;
   justify-content: center;
-  margin-right: 1vh;
+  margin-right: 2vh;
 }
 
 .burger-card {

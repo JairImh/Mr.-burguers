@@ -35,36 +35,54 @@ function updateCart() {
 }
 
 // ✅ FUNCIONALIDAD DEL BOTÓN
-whatsappBtn.addEventListener('click', () => {
-  const dateValue = deliveryDate.value;
-  const timeValue = deliveryTime.value;
+function generarSabados() {
+  const select = document.getElementById('saturday-date');
+  const hoy = new Date();
+  let sabadosGenerados = 0;
+  let dia = new Date(hoy);
 
-  if (!dateValue || !timeValue) {
-    alert('Por favor, completá el día y la hora de entrega.');
-    return;
+  while (sabadosGenerados < 4) {
+      dia.setDate(dia.getDate() + 1);
+      if (dia.getDay() === 6) {
+          const yyyy = dia.getFullYear();
+          const mm = String(dia.getMonth() + 1).padStart(2, '0');
+          const dd = String(dia.getDate()).padStart(2, '0');
+          const fecha = `${yyyy}-${mm}-${dd}`;
+
+          const option = document.createElement('option');
+          option.value = fecha;
+          option.textContent = `${dd}/${mm}/${yyyy}`;
+          select.appendChild(option);
+          sabadosGenerados++;
+      }
+  }
+}
+generarSabados();
+
+document.getElementById('reservar-btn').addEventListener('click', () => {
+  const fecha = document.getElementById('saturday-date').value;
+  const hora = document.getElementById('saturday-time').value;
+  const errorMsg = document.getElementById('reserva-error');
+
+  if (!fecha || !hora) {
+      errorMsg.textContent = "Elegí una fecha y un horario.";
+      errorMsg.style.display = "block";
+      return;
   }
 
-  const deliveryDateTime = new Date(`${dateValue}T${timeValue}`);
-  const now = new Date();
-  const diffHours = (deliveryDateTime - now) / 1000 / 60 / 60;
+  const fechaHora = new Date(`${fecha}T${hora}:00`);
+  const ahora = new Date();
+  const tresHoras = 3 * 60 * 60 * 1000;
 
-  if (diffHours < 3) {
-    alert('El pedido debe hacerse con al menos 3 horas de anticipación.');
-    return;
+  if ((fechaHora - ahora) < tresHoras) {
+      errorMsg.textContent = "La reserva debe hacerse con al menos 3 horas de anticipación.";
+      errorMsg.style.display = "block";
+      return;
   }
 
-  if (cart.length === 0) {
-    alert('Tu carrito está vacío. Agregá al menos una hamburguesa.');
-    return;
-  }
-
-  const message = cart.map(i => `${i.name} - $${i.price}`).join('%0A') +
-    `%0A%0ATotal: $${total}` +
-    `%0A📅 Entrega: ${dateValue} a las ${timeValue}`;
-
-  const phone = "543496516330"; // Cambiar por tu número real
-  const link = `https://wa.me/${phone}?text=Hola! Quiero hacer este pedido:%0A${message}`;
-
-  window.open(link, '_blank');
+  // Redirigir a Mercado Pago (modo prueba)
+  window.open("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=123456789", "_blank");
 });
+
+
 

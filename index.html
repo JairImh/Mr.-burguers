@@ -15,46 +15,54 @@
 
   <main>
     <section class="menu">
-      <div class="burger-card" data-name="Clásica" data-price="1500">
-        <img src="img/CLASICA.png" alt="Clásica">
-        <h2>Simple</h2>
+      <div class="burger-card" data-name="Hamburguesa Clásica" data-price="1500">
+        <img src="img/CLASICA.png" alt="Hamburguesa Clásica">
+        <h2>Mr. Clásica😎</h2>
         <p>Carne, lechuga, tomate y cheddar</p>
         <button>🍔 Agregar</button>
       </div>
-      <div class="burger-card" data-name="Doble Bacon" data-price="2200">
-        <img src="img/COMPLETA.PNG" alt="Clásica Completa">
-        <h2>Simple Completa </h2>
+      <div class="burger-card" data-name="Hamburguesa Simple Completa" data-price="2200">
+        <img src="img/COMPLETA.PNG" alt="Hamburguesa Simple Completa">
+        <h2>Mr. Especial </h2>
         <p>Doble carne, cheddar, bacon, salsa especial</p>
         <button>🍔 Agregar</button>
       </div>
-      <div class="burger-card" data-name="Veggie" data-price="1800">
-        <img src="img/DOBLE.PNG" alt="Hamburguesa Doble">
-        <h2>Doble simple</h2>
+      <div class="burger-card" data-name="Hamburguesa doble común" data-price="00">
+        <img src="img/DOBLE.PNG" alt="Hamburguesa Doble comun">
+        <h2>doble</h2>
         <p>Doble carne, cebolla caramelizada</p>
         <button>🍔 Agregar</button>
       </div>
 
-      <div class="burger-card" data-name="Veggie" data-price="1800">
-        <img src="img/DOBLE COMPLETA.png" alt="Hamburguesa Doble Completa">
-        <h2>Doble Completa</h2>
+      <div class="burger-card" data-name="Doble Deluxe" data-price="12000">
+        <img src="img/DOBLE COMPLETA.png" alt="Doble Deluxe">
+        <h2>Mr. fiesta</h2>
         <p>Doble carne, Cebolla caramelizada, Doble queso, tomate y lechuga</p>
         <button>🍔 Agregar</button>
       </div>
     </section>
-
-    <aside class="cart">
-      <label for="delivery-date">📅 Día de entrega:</label>
-      <input type="date" id="delivery-date" required>
-
-      <label for="delivery-time">⏰ Hora de entrega:</label>
-      <input type="time" id="delivery-time" required>
-
-      <h2>🛒 Tu pedido</h2>
+    <div class="cart">
+      <h2>Tu pedido</h2>
       <ul id="cart-list"></ul>
       <p class="total">Total: $<span id="total">0</span></p>
-      <button id="whatsapp-btn">📲 Pedir por WhatsApp</button>
-
-    </aside>
+    
+      <label for="saturday-date">Elegí un sábado:</label>
+      <select id="saturday-date"></select>
+    
+      <label for="saturday-time">Elegí un horario de 20 a 23 (horario estimativo):</label>
+      <select id="saturday-time">
+        <option value="">-- Elegí un horario --</option>
+        <option value="20:00">20:00</option>
+        <option value="21:00">21:00</option>
+        <option value="22:00">22:00</option>
+        <option value="23:00">23:00</option>
+      </select>
+    
+      <button id="reservar-btn">Reservar y pagar</button>
+      <p id="reserva-error" style="color:red; display:none; margin-top: 10px;"></p>
+    </div>
+    
+    
   </main>
 
   <footer>

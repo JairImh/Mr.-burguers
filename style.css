@@ -41,7 +41,7 @@ main {
   flex-wrap: wrap;
   flex: 2;
   justify-content: center;
-  margin-right: 2vh;
+  margin-right: 1vh;
 }
 
 .burger-card {
@@ -63,7 +63,7 @@ main {
   .burger-card img {
     width: max-content;
     height: 160px;
-    object-fit:;
+    object-fit:contain;
     border-radius: 10px;
     margin-bottom: 10px;
     
@@ -100,51 +100,79 @@ main {
   
   /* CARRITO */
   .cart {
-    background-color: #f3e9dc;
+    background-color: #f1e7da;
     padding: 20px;
-    border-radius: 16px;
-    width: 300px;
-    border: 1px solid #c8b6a6;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(78, 52, 46, 0.15);
+    max-width: 400px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', sans-serif;
+    color: #4e342e;
   }
   
   .cart h2 {
-    color: #4e342e;
-  }
-  
-  
-  #cart-list {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 15px;
-  }
-  
-  #cart-list li {
-    color: #5d4037;
-  }
-  
-  .total {
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #4e342e;
-  }
-  
-  #whatsapp-btn {
-    display: block;
-    width: 100%;
-    background: #d2a679;
-    color: white;
-    text-decoration: none;
-    padding: 12px;
-    border-radius: 10px;
+    margin-top: 0;
+    font-size: 22px;
     text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-    transition: background 0.3s;
   }
   
-  #whatsapp-btn:hover {
-    background: #a97458;
+  .cart ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
   }
+  
+  .cart li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #d4bfa9;
+    padding-bottom: 5px;
+  }
+  
+  .cart label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .cart select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #c8b6a6;
+    background-color: #fffaf3;
+    font-size: 15px;
+  }
+  
+  .cart .total {
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+  }
+  
+  #reservar-btn {
+    background-color: #a97458;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #reservar-btn:hover {
+    background-color: #8b5c44;
+  }
+  
+  #reserva-error {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
   
   /* FOOTER */
   footer {

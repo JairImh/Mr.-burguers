@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🍔 Mr. Burguers</title>
+  <title>🍔 Mr. Burgers</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Rubik+Glitch&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>🍔 Mr. Burguers</h1>
+    <h1>🍔 Mr. Burgers</h1>
     <p>Hamburguesas con estilo y sabor</p>
   </header>
 
@@ -41,6 +41,7 @@
         <button>🍔 Agregar</button>
       </div>
     </section>
+
     <div class="cart">
       <h2>Tu pedido</h2>
       <ul id="cart-list"></ul>
@@ -57,16 +58,18 @@
         <option value="22:00">22:00</option>
         <option value="23:00">23:00</option>
       </select>
-    
-      <button id="reservar-btn">Reservar y pagar</button>
+
+      <!-- ✅ CAMPO PARA WHATSAPP -->
+      <label for="telefono-cliente" style="margin-top: 10px;">Tu número de WhatsApp:</label>
+      <input type="tel" id="telefono-cliente" placeholder="Ej: 1123456789" style="width: 100%; padding: 8px; margin-top: 5px;" />
+
+      <button id="reservar-btn" style="margin-top: 15px;">Reservar y pagar</button>
       <p id="reserva-error" style="color:red; display:none; margin-top: 10px;"></p>
     </div>
-    
-    
   </main>
 
   <footer>
-    <p>🔥 Mr. Burguers © 2025 - Design for Jair Imhoff - @jairimhoff  🔥</p>
+    <p>🔥 Mr. Burgers © 2025 - Design for Jair Imhoff - @jairimhoff 🔥</p>
   </footer>
 
   <script src="script.js"></script>

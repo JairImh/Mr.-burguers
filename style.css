@@ -248,3 +248,21 @@ main {
     background-color: #fff9f2;
     color: #4e342e;
   }
+  
+  #whatsapp-btn {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #whatsapp-btn:hover {
+    background-color: #1ebe57;
+  }
+  

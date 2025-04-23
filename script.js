@@ -84,5 +84,40 @@ document.getElementById('reservar-btn').addEventListener('click', () => {
   window.open("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=123456789", "_blank");
 });
 
+function updateCart() {
+  cartList.innerHTML = '';
+  total = 0;
+
+  cart.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.style.display = 'flex';
+    li.style.justifyContent = 'space-between';
+    li.style.alignItems = 'center';
+
+    const texto = document.createElement('span');
+    texto.textContent = `${item.name} - $${item.price}`;
+
+    const eliminarBtn = document.createElement('button');
+    eliminarBtn.textContent = '🗑️';
+    eliminarBtn.style.background = 'none';
+    eliminarBtn.style.border = 'none';
+    eliminarBtn.style.cursor = 'pointer';
+    eliminarBtn.style.fontSize = '1.2rem';
+
+    eliminarBtn.addEventListener('click', () => {
+      cart.splice(index, 1);
+      updateCart();
+    });
+
+    li.appendChild(texto);
+    li.appendChild(eliminarBtn);
+    cartList.appendChild(li);
+    total += item.price;
+  });
+
+  totalDisplay.textContent = total;
+}
+
+
 
 

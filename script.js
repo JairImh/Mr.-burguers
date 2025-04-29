@@ -12,10 +12,10 @@ let total = 0;
 
 // Inicializar el almacenamiento local de medallones si no existe
 if (!localStorage.getItem('medallonesDisponibles')) {
-  localStorage.setItem('medallonesDisponibles', 50); // Inicializar con 50 medallones
+  localStorage.setItem('medallonesDisponibles', 50); // Inicializar con 50 medallones si no existe
 }
 
-let medallonesDisponibles = parseInt(localStorage.getItem('medallonesDisponibles')); // Obtener los medallones disponibles
+let medallonesDisponibles = parseInt(localStorage.getItem('medallonesDisponibles')); // Obtener los medallones disponibles desde localStorage
 
 // ✅ NUEVA FUNCIÓN: calcular medallones según el tipo
 function medallonesNecesarios(tipo) {
@@ -103,6 +103,8 @@ function verificarStock() {
 // Actualizar el contador de medallones disponibles en la interfaz
 function updateMedallonesDisponibles() {
   medallonesDisponiblesDisplay.textContent = medallonesDisponibles;
+  // Guardar el número actualizado de medallones en localStorage
+  localStorage.setItem('medallonesDisponibles', medallonesDisponibles);
 }
 
 // Generar sábados

@@ -204,3 +204,18 @@ reservarBtn.addEventListener('click', () => {
   // Deshabilitar los botones de las hamburguesas sin stock
   verificarStock();
 });
+  // Mostrar botón si se ingresa la clave correcta
+  const clave = prompt("Si sos cliente ignorá ésta alerta. Gracias!:");
+
+  if (clave === "mrburgers123") {
+    document.getElementById('reiniciar-stock').style.display = 'inline-block';
+  }
+  
+  // Acción del botón
+  document.getElementById('reiniciar-stock').addEventListener('click', () => {
+    medallonesDisponibles = 50;
+    localStorage.setItem('medallonesDisponibles', medallonesDisponibles);
+    updateMedallonesDisponibles();
+    verificarStock();
+    alert("¡Stock reiniciado a 50 medallones!");
+  });

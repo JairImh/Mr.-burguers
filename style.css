@@ -290,3 +290,32 @@ footer {
 #whatsapp-btn:hover {
   background-color: #1ebe57;
 }
+.stock {
+  display: none;
+}
+
+#reiniciar-stock {
+  display: none;
+}
+#reiniciar-stock {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+#reiniciar-stock:hover {
+  background-color: #d62839;
+  transform: scale(1.05);
+}
+
+#reiniciar-stock:active {
+  transform: scale(0.97);
+}

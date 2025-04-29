@@ -173,12 +173,7 @@ reservarBtn.addEventListener('click', () => {
   mensajeExito.style.color = "green";
   document.body.appendChild(mensajeExito);
 
-// Enviar mensaje al cliente
-const urlCliente = `https://wa.me/549${telefonoCliente}?text=${encodeURIComponent(mensajeCliente)}`;
-window.open(urlCliente, '_blank');
-
-// Enviar mensaje a ti mismo (revisado)
-const urlMiPedido = `https://wa.me/3496516330?text=${encodeURIComponent(mensajeParaMi)}`;
-window.open(urlMiPedido, '_blank');
-
+  // Solo enviar mensaje a tu número de WhatsApp
+  const urlMiPedido = `https://wa.me/3496516330?text=${encodeURIComponent(mensajeParaMi)}`;
+  window.open(urlMiPedido, '_blank');
 });

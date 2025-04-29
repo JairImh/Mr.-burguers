@@ -9,7 +9,13 @@ const errorMsg = document.getElementById('reserva-error'); // Mensaje de error
 
 let cart = [];
 let total = 0;
-let medallonesDisponibles = 50; // Stock de medallones
+
+// Inicializar el almacenamiento local de medallones si no existe
+if (!localStorage.getItem('medallonesDisponibles')) {
+  localStorage.setItem('medallonesDisponibles', 50); // Inicializar con 50 medallones
+}
+
+let medallonesDisponibles = parseInt(localStorage.getItem('medallonesDisponibles')); // Obtener los medallones disponibles
 
 // ✅ NUEVA FUNCIÓN: calcular medallones según el tipo
 function medallonesNecesarios(tipo) {
@@ -176,4 +182,23 @@ reservarBtn.addEventListener('click', () => {
   // Solo enviar mensaje a tu número de WhatsApp
   const urlMiPedido = `https://wa.me/3496516330?text=${encodeURIComponent(mensajeParaMi)}`;
   window.open(urlMiPedido, '_blank');
+
+  // Vaciar el carrito y actualizar la interfaz
+  cart = [];
+  updateCart();
+
+  // Descontar medallones y guardar en localStorage
+  cart.forEach(item => {
+    const medallones = medallonesNecesarios(item.tipo);
+    medallonesDisponibles -= medallones;
+  });
+
+  // Guardar los medallones restantes en localStorage
+  localStorage.setItem('medallonesDisponibles', medallonesDisponibles);
+
+  // Actualizar el contador de medallones disponibles
+  updateMedallonesDisponibles();
+
+  // Deshabilitar los botones de las hamburguesas sin stock
+  verificarStock();
 });

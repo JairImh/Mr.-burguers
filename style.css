@@ -55,214 +55,238 @@ main {
   color: #4e342e;
 }
 
-  .burger-card:hover {
-    transform: scale(1.05);
-    border-color: #4e342e;
+.burger-card:hover {
+  transform: scale(1.05);
+  border-color: #4e342e;
+}
+
+.burger-card img {
+  width: max-content;
+  height: 160px;
+  object-fit:contain;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.burger-card h2 {
+  margin: 0;
+  font-size: 1.4em;
+  color: #6d4c41;
+}
+
+.burger-card p {
+  font-size: 0.95em;
+  color: #5d4037;
+}
+
+.burger-card button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #d2a679;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.burger-card button:hover {
+  background: #a97458;
+  transform: scale(1.05);
+}
+
+/* CARRITO */
+.cart {
+  background-color: #f1e7da;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(78, 52, 46, 0.15);
+  max-width: 400px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: #4e342e;
+}
+
+.cart h2 {
+  margin-top: 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.cart li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d4bfa9;
+  padding-bottom: 5px;
+}
+
+.cart label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.cart select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #c8b6a6;
+  background-color: #fffaf3;
+  font-size: 15px;
+}
+
+.cart .total {
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+}
+
+#reservar-btn {
+  background-color: #a97458;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+#reservar-btn:hover {
+  background-color: #8b5c44;
+}
+
+#reserva-error {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* BOTÓN CONSULTAR */
+#consultar-btn {
+  background-color: #d2a679; /* Beige similar a los botones */
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#consultar-btn:hover {
+  background-color: #a97458; /* Beige más oscuro al pasar el cursor */
+}
+
+/* MEDALLONES DISPONIBLES */
+#medallones-disponibles {
+  color: #4e342e; /* Gris oscuro/marrón */
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: #e6dbc8;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #4e342e;
+  border-top: 1px solid #c8b6a6;
+}
+
+/* 📱 RESPONSIVE */
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .burger-card img {
-    width: max-content;
-    height: 160px;
-    object-fit:contain;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  
-  .burger-card h2 {
-    margin: 0;
-    font-size: 1.4em;
-    color: #6d4c41;
+
+  .burger-card {
+    width: 90%;
   }
-  
-  .burger-card p {
-    font-size: 0.95em;
-    color: #5d4037;
-  }
-  
-  .burger-card button {
-    margin-top: 12px;
-    padding: 10px 16px;
-    background: #d2a679;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .burger-card button:hover {
-    background: #a97458;
-    transform: scale(1.05);
-  }
-  
-  /* CARRITO */
+
   .cart {
-    background-color: #f1e7da;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 12px rgba(78, 52, 46, 0.15);
-    max-width: 400px;
-    margin: 30px auto;
-    font-family: 'Segoe UI', sans-serif;
-    color: #4e342e;
+    width: 90%;
   }
-  
-  .cart h2 {
-    margin-top: 0;
-    font-size: 22px;
-    text-align: center;
+
+  header h1 {
+    font-size: 2.5em;
   }
-  
-  .cart ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
+
+  header p {
+    font-size: 1em;
   }
-  
-  .cart li {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #d4bfa9;
-    padding-bottom: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .burger-card h2 {
+    font-size: 1.2em;
   }
-  
-  .cart label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
+
+  .burger-card p {
+    font-size: 0.85em;
   }
-  
-  .cart select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #c8b6a6;
-    background-color: #fffaf3;
-    font-size: 15px;
+
+  .burger-card button {
+    font-size: 0.95em;
   }
-  
-  .cart .total {
-    margin: 20px 0;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: right;
+
+  .total {
+    font-size: 1em;
   }
-  
-  #reservar-btn {
-    background-color: #a97458;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  #reservar-btn:hover {
-    background-color: #8b5c44;
-  }
-  
-  #reserva-error {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  
-  /* FOOTER */
-  footer {
-    background: #e6dbc8;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #4e342e;
-    border-top: 1px solid #c8b6a6;
-  }
-  /* 📱 RESPONSIVE */
-  @media screen and (max-width: 768px) {
-    main {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .menu {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .burger-card {
-      width: 90%;
-    }
-  
-    .cart {
-      width: 90%;
-    }
-  
-    header h1 {
-      font-size: 2.5em;
-    }
-  
-    header p {
-      font-size: 1em;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .burger-card h2 {
-      font-size: 1.2em;
-    }
-  
-    .burger-card p {
-      font-size: 0.85em;
-    }
-  
-    .burger-card button {
-      font-size: 0.95em;
-    }
-  
-    .total {
-      font-size: 1em;
-    }
-  
-    #whatsapp-btn {
-      font-size: 1em;
-      padding: 10px;
-    }
-  }
-  .cart label {
-    font-weight: bold;
-    color: #5d4037;
-  }
-  
-  .cart input {
-    width: 95%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #c8b6a6;
-    border-radius: 10px;
-    background-color: #fff9f2;
-    color: #4e342e;
-  }
-  
+
   #whatsapp-btn {
-    background-color: #25d366;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    font-size: 1em;
+    padding: 10px;
   }
-  
-  #whatsapp-btn:hover {
-    background-color: #1ebe57;
-  }
-  
+}
+
+.cart label {
+  font-weight: bold;
+  color: #5d4037;
+}
+
+.cart input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #c8b6a6;
+  border-radius: 10px;
+  background-color: #fff9f2;
+  color: #4e342e;
+}
+
+#whatsapp-btn {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#whatsapp-btn:hover {
+  background-color: #1ebe57;
+}

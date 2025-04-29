@@ -6,39 +6,41 @@
   <title>🍔 Mr. Burgers</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 <body>
   <header>
     <h1>🍔 Mr. Burgers</h1>
     <p>Hamburguesas con estilo y sabor</p>
   </header>
-
+  <div class="stock">
+    <p>Medallones disponibles: <span id="medallones-disponibles">50</span></p>
+  </div>
   <main>
     <section class="menu">
-      <div class="burger-card" data-name="Hamburguesa Clásica" data-price="1500">
+      <div class="burger-card" data-name="Hamburguesa Clásica" data-price="1500" data-type="simple">
         <img src="img/CLASICA.png" alt="Hamburguesa Clásica">
         <h2>Mr. Clásica😎</h2>
         <p>Carne, lechuga, tomate y cheddar</p>
-        <button>🍔 Agregar</button>
+        <button class="agregar">🍔 Agregar</button>
       </div>
-      <div class="burger-card" data-name="Hamburguesa Simple Completa" data-price="2200">
+      <div class="burger-card" data-name="Hamburguesa Simple Completa" data-price="2200" data-type="simple">
         <img src="img/COMPLETA.PNG" alt="Hamburguesa Simple Completa">
         <h2>Mr. Especial </h2>
         <p>Doble carne, cheddar, bacon, salsa especial</p>
-        <button>🍔 Agregar</button>
+        <button class="agregar">🍔 Agregar</button>
       </div>
-      <div class="burger-card" data-name="Hamburguesa doble común" data-price="00">
-        <img src="img/DOBLE.PNG" alt="Hamburguesa Doble comun">
-        <h2>doble</h2>
+      <div class="burger-card" data-name="Hamburguesa Doble Común" data-price="3000" data-type="doble">
+        <img src="img/DOBLE.PNG" alt="Hamburguesa Doble Común">
+        <h2>Mr. Doble</h2>
         <p>Doble carne, cebolla caramelizada</p>
-        <button>🍔 Agregar</button>
+        <button class="agregar">🍔 Agregar</button>
       </div>
-
-      <div class="burger-card" data-name="Mr. Fiesta" data-price="12000">
+      <div class="burger-card" data-name="Mr. Fiesta" data-price="12000" data-type="doble">
         <img src="img/DOBLE COMPLETA.png" alt="Mr. Fiesta">
-        <h2>Mr. fiesta</h2>
-        <p>Doble carne, Cebolla caramelizada, Doble queso, tomate y lechuga</p>
-        <button>🍔 Agregar</button>
+        <h2>Mr. Fiesta</h2>
+        <p>Doble carne, cebolla caramelizada, doble queso, tomate y lechuga</p>
+        <button class="agregar">🍔 Agregar</button>
       </div>
     </section>
 
@@ -46,10 +48,10 @@
       <h2>Tu pedido</h2>
       <ul id="cart-list"></ul>
       <p class="total">Total: $<span id="total">0</span></p>
-    
+
       <label for="saturday-date">Elegí un sábado:</label>
       <select id="saturday-date"></select>
-    
+
       <label for="saturday-time">Elegí un horario de 20 a 23 (horario estimativo):</label>
       <select id="saturday-time">
         <option value="">-- Elegí un horario --</option>
@@ -59,12 +61,16 @@
         <option value="23:00">23:00</option>
       </select>
 
-      <!-- ✅ CAMPO PARA WHATSAPP -->
       <label for="telefono-cliente" style="margin-top: 10px;">Tu número de WhatsApp:</label>
       <input type="tel" id="telefono-cliente" placeholder="Ej: 1123456789" style="width: 100%; padding: 8px; margin-top: 5px;" />
 
-      <button id="reservar-btn" style="margin-top: 15px;">Reservar y pagar</button>
+      <!-- Botón para consultar -->
+      <button id="consultar-btn" style="margin-top: 15px;">Consultar</button>
+
       <p id="reserva-error" style="color:red; display:none; margin-top: 10px;"></p>
+
+      <!-- Botón para cancelar pedido -->
+      <button id="cancelar-pedido" style="margin-top: 15px; display: none;">Cancelar pedido</button>
     </div>
   </main>
 

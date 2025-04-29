@@ -1,25 +1,22 @@
-const buttons = document.querySelectorAll('.burger-card button');
+const buttons = document.querySelectorAll('.burger-card button'); 
 const cartList = document.getElementById('cart-list');
 const totalDisplay = document.getElementById('total');
-const whatsappBtn = document.getElementById('whatsapp-btn');
-
-const deliveryDate = document.getElementById('delivery-date');
-const deliveryTime = document.getElementById('delivery-time');
+const reservarBtn = document.getElementById('consultar-btn');
+const medallonesDisponiblesDisplay = document.getElementById('medallones-disponibles'); // Contenedor de medallones disponibles
+const diaSelect = document.getElementById('saturday-date');
+const horarioSelect = document.getElementById('saturday-time');
+const errorMsg = document.getElementById('reserva-error'); // Mensaje de error
 
 let cart = [];
 let total = 0;
+let medallonesDisponibles = 50; // Stock de medallones
 
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    const card = button.parentElement;
-    const name = card.getAttribute('data-name');
-    const price = parseInt(card.getAttribute('data-price'));
+// ✅ NUEVA FUNCIÓN: calcular medallones según el tipo
+function medallonesNecesarios(tipo) {
+  return tipo === 'doble' ? 2 : 1;
+}
 
-    cart.push({ name, price });
-    updateCart();
-  });
-});
-
+// Actualizar carrito
 function updateCart() {
   cartList.innerHTML = '';
   total = 0;
@@ -41,8 +38,12 @@ function updateCart() {
     eliminarBtn.style.fontSize = '1.2rem';
 
     eliminarBtn.addEventListener('click', () => {
+      const medallones = medallonesNecesarios(item.tipo); // ✅ basado en data-type
+      medallonesDisponibles += medallones;
+      updateMedallonesDisponibles();
       cart.splice(index, 1);
       updateCart();
+      verificarStock();
     });
 
     li.appendChild(texto);
@@ -54,7 +55,51 @@ function updateCart() {
   totalDisplay.textContent = total;
 }
 
-// Generar fechas de sábados
+// Botones para agregar hamburguesas
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.parentElement;
+    const name = card.getAttribute('data-name');
+    const price = parseInt(card.getAttribute('data-price'));
+    const tipo = card.getAttribute('data-type'); // ✅ obtenemos el tipo
+
+    const medallones = medallonesNecesarios(tipo);
+
+    if (medallonesDisponibles >= medallones) {
+      medallonesDisponibles -= medallones;
+      updateMedallonesDisponibles();
+      cart.push({ name, price, tipo }); // ✅ guardamos el tipo
+      updateCart();
+      verificarStock();
+    } else {
+      alert("No hay suficientes medallones disponibles para esta hamburguesa 😢");
+    }
+  });
+});
+
+// Verificar stock
+function verificarStock() {
+  buttons.forEach(button => {
+    const card = button.parentElement;
+    const tipo = card.getAttribute('data-type'); // ✅ usamos el tipo
+    const necesarios = medallonesNecesarios(tipo);
+
+    if (medallonesDisponibles < necesarios) {
+      button.disabled = true;
+      button.textContent = "Sin stock";
+    } else {
+      button.disabled = false;
+      button.textContent = "🍔 Agregar";
+    }
+  });
+}
+
+// Actualizar el contador de medallones disponibles en la interfaz
+function updateMedallonesDisponibles() {
+  medallonesDisponiblesDisplay.textContent = medallonesDisponibles;
+}
+
+// Generar sábados
 function generarSabados() {
   const select = document.getElementById('saturday-date');
   const hoy = new Date();
@@ -79,46 +124,61 @@ function generarSabados() {
 }
 generarSabados();
 
-// ✅ FUNCIONALIDAD RESERVA + WHATSAPP
-document.getElementById('reservar-btn').addEventListener('click', () => {
-  const fecha = document.getElementById('saturday-date').value;
-  const hora = document.getElementById('saturday-time').value;
+// BOTÓN CONSULTAR (solo efectivo)
+reservarBtn.addEventListener('click', () => {
+  const fecha = diaSelect.value;
+  const hora = horarioSelect.value;
   const telefonoCliente = document.getElementById('telefono-cliente').value.trim();
-  const errorMsg = document.getElementById('reserva-error');
 
+  // Verificamos si el carrito está vacío
+  if (cart.length === 0) {
+    errorMsg.textContent = "Tu carrito está vacío. Agregá al menos una hamburguesa para reservar.";
+    errorMsg.style.display = "block";
+    return;
+  }
+
+  // Verificamos si se seleccionó fecha y hora
   if (!fecha || !hora) {
     errorMsg.textContent = "Elegí una fecha y un horario.";
     errorMsg.style.display = "block";
     return;
   }
 
+  // Verificamos si el teléfono está vacío
   if (!telefonoCliente) {
     errorMsg.textContent = "Por favor ingresá tu número de WhatsApp.";
     errorMsg.style.display = "block";
     return;
   }
 
+  // Verificación de que la reserva sea al menos con un día de anticipación
   const fechaHora = new Date(`${fecha}T${hora}:00`);
   const ahora = new Date();
-  const tresHoras = 3 * 60 * 60 * 1000;
+  const unDia = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
 
-  if ((fechaHora - ahora) < tresHoras) {
-    errorMsg.textContent = "La reserva debe hacerse con al menos 3 horas de anticipación.";
+  if ((fechaHora - ahora) < unDia) {
+    errorMsg.textContent = "La reserva debe hacerse con al menos 1 día de anticipación.";
     errorMsg.style.display = "block";
     return;
   }
 
-  // Mensaje para el cliente
-  const mensajeCliente = `Hola! Confirmamos tu pedido:\n\n${cart.map(i => `• ${i.name} - $${i.price}`).join('\n')}\n\nTotal: $${total}\nFecha de entrega: ${fecha} a las ${hora}. ¡Gracias por tu compra!`;
-  const urlCliente = `https://wa.me/549${telefonoCliente}?text=${encodeURIComponent(mensajeCliente)}`;
-  window.open(urlCliente, '_blank');
+  // Si pasa todas las validaciones, realizamos la reserva
+  const mensajeCliente = `Hola! Confirmamos tu pedido:\n\n${cart.map(i => `• ${i.name} - $${i.price}`).join('\n')}\n\nTotal: $${total}\nFecha de entrega: ${fecha} a las ${hora}.\n\nEl pago será en efectivo al momento de la entrega. ¡Gracias por tu compra!`;
 
-  // Mensaje para vos (reemplazá con tu número)
-  const tuNumero = '5491122334455'; // 👈 CAMBIÁ ESTE NÚMERO por el tuyo
-  const mensajeParaMi = `Nuevo pedido!\n\n${cart.map(i => `• ${i.name} - $${i.price}`).join('\n')}\n\nTotal: $${total}\nFecha: ${fecha} ${hora}\nTeléfono cliente: ${telefonoCliente}`;
-  const urlParaMi = `https://wa.me/${tuNumero}?text=${encodeURIComponent(mensajeParaMi)}`;
-  window.open(urlParaMi, '_blank');
+  const mensajeParaMi = `Nuevo pedido!\n\n${cart.map(i => `• ${i.name} - $${i.price}`).join('\n')}\n\nTotal: $${total}\nFecha: ${fecha} ${hora}\nTeléfono cliente: ${telefonoCliente}\nMétodo de pago: Efectivo\n\n⚡ Medallones disponibles: ${medallonesDisponibles}`;
 
-  // Redirigir a Mercado Pago (modo prueba)
-  window.open("https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=123456789", "_blank");
+  // Mostrar mensaje de éxito en la interfaz
+  const mensajeExito = document.createElement("p");
+  mensajeExito.textContent = "¡Reserva realizada! El pago será en efectivo al momento de la entrega.";
+  mensajeExito.style.color = "green";
+  document.body.appendChild(mensajeExito);
+
+// Enviar mensaje al cliente
+const urlCliente = `https://wa.me/549${telefonoCliente}?text=${encodeURIComponent(mensajeCliente)}`;
+window.open(urlCliente, '_blank');
+
+// Enviar mensaje a ti mismo (revisado)
+const urlMiPedido = `https://wa.me/3496516330?text=${encodeURIComponent(mensajeParaMi)}`;
+window.open(urlMiPedido, '_blank');
+
 });
